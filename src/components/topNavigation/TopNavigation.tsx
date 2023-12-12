@@ -1,7 +1,7 @@
-import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import type { FC } from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 
 export const TopNavigation: FC = () =>  {
   const { data } = useSession();

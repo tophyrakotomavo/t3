@@ -31,6 +31,8 @@ export const env = createEnv({
     // Add ` on ID and SECRET if you want to make sure they're not empty
     UPLOADTHING_APP_ID: z.string(),
     UPLOADTHING_SECRET: z.string(),
+    DEFAULT_USER_EMAIL: z.string(),
+    DEFAULT_PASSWORD_EMAIL: z.string(),
   },
 
   /**
@@ -53,15 +55,16 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
     UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
+    DEFAULT_USER_EMAIL: process.env.DEFAULT_USER_EMAIL,
+    DEFAULT_PASSWORD_EMAIL: process.env.DEFAULT_PASSWORD_EMAIL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
    * useful for Docker builds.
    */
-  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
+  skipValidation: !!process.env.SKIP_ENV_VALIDATION
   /**
    * Makes it so that empty strings are treated as undefined.
    * `SOME_VAR: z.string()` and `SOME_VAR=''` will throw an error.
    */
-  emptyStringAsUndefined: true,
 });

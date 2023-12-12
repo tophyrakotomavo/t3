@@ -8,4 +8,5 @@ export default {
   dbCredentials: {
     uri: env.DATABASE_URL,
   },
+  out: "./drizzle",
 } satisfies Config;

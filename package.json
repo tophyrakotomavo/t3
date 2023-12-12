@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "next build",
+    "drizzle:generate": "drizzle-kit generate:mysql",
     "db:push": "dotenv drizzle-kit push:mysql",
     "db:studio": "dotenv drizzle-kit studio --port 4983",
+    "db:seed": "tsx ./src/server/db/seed.ts",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
@@ -66,6 +68,7 @@
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
+    "tsx": "^4.6.2",
     "typescript": "^5.1.6"
   },
   "ct3aMetadata": {
