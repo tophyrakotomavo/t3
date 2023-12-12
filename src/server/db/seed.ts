@@ -13,9 +13,13 @@ const db = drizzle(new Client({ url: process.env.DATABASE_URL }).connection(), {
 });
 
 const main = async () => {
-  const hashedPassword = await hashPassword(process.env.DEFAULT_USER_EMAIL ?? '');
+  if (isNaN(Number(process.env.SALT))) {
+    throw 'SALT ENV MIssing';
+  }
+
+  const hashedPassword = await hashPassword(process.env.DEFAULT_PASSWORD_EMAIL ?? '', Number(process.env.SALT) ?? 10);
   await db.insert(schema.users).values({
-    email: process.env.DEFAULT_PASSWORD_EMAIL ?? '',
+    email: process.env.DEFAULT_USER_EMAIL ?? '',
     password: hashedPassword,
     role: "ADMIN",
   });

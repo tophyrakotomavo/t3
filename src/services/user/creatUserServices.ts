@@ -1,6 +1,7 @@
 import { users } from "@/server/db/schema";
 import type { SegmentedParams } from "@/types";
 import { hashPassword } from "@/utils/hashPassword";
+import { env } from '@/env';
 
 export const createUserServices = async ({
   ctx,
@@ -9,7 +10,7 @@ export const createUserServices = async ({
   email: string;
   password: string;
 }>) => {
-  const hashedPassword = await hashPassword(input.password);
+  const hashedPassword = await hashPassword(input.password, Number(env.NEXTAUTH_SECRET) ?? 10);
 
   const user = ctx.db.insert(users).values({
     email: input.email,

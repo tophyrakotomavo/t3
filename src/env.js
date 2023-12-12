@@ -33,6 +33,7 @@ export const env = createEnv({
     UPLOADTHING_SECRET: z.string(),
     DEFAULT_USER_EMAIL: z.string(),
     DEFAULT_PASSWORD_EMAIL: z.string(),
+    SALT: z.preprocess((v) => Number(v), z.number()),
   },
 
   /**
@@ -57,6 +58,7 @@ export const env = createEnv({
     UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
     DEFAULT_USER_EMAIL: process.env.DEFAULT_USER_EMAIL,
     DEFAULT_PASSWORD_EMAIL: process.env.DEFAULT_PASSWORD_EMAIL,
+    SALT: process.env.SALT,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
